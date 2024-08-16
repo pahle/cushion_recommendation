@@ -1,21 +1,55 @@
 import React from "react";
 
 const AHP = () => {
+  const criteriaHarga = 1
+  const criteriaMerk = 0.33
+  const criteriaShade = 2
+  const criteriaKetahanan = 1
+  const criteriaCoverage = 0.5
+  const criteriaJenisKulit = 4
+
+  const c1 = criteriaHarga
+  const c2 = criteriaMerk
+  const c3 = criteriaShade
+  const c4 = criteriaKetahanan
+  const c5 = criteriaCoverage
+  const c6 = criteriaJenisKulit
+
+  // const tabelPerbandingan = [
+  //   [c1/c1, c1/c2, c1/c3, c1/c4, c1/c5, c1/c6],
+  //   [c2/c1, c2/c2, c2/c3, c2/c4, c2/c5, c2/c6],
+  //   [c3/c1, c3/c2, c3/c3, c3/c4, c3/c5, c3/c6],
+  //   [c4/c1, c4/c2, c4/c3, c4/c4, c4/c5, c4/c6],
+  //   [c5/c1, c5/c2, c5/c3, c5/c4, c5/c5, c5/c6],
+  //   [c6/c1, c6/c2, c6/c3, c6/c4, c6/c5, c6/c6]
+  // ]
+
+  const tabelPerbandingan = [
+    [c1/c1, c2/c1, c3/c1, c4/c1, c5/c1, c6/c1],
+    [c1/c2, c2/c2, c3/c2, c4/c2, c5/c2, c6/c2],
+    [c1/c3, c2/c3, c3/c3, c4/c3, c5/c3, c6/c3],
+    [c1/c4, c2/c4, c3/c4, c4/c4, c5/c4, c6/c4],
+    [c1/c5, c2/c5, c3/c5, c4/c5, c5/c5, c6/c5],
+    [c1/c6, c2/c6, c3/c6, c4/c6, c5/c6, c6/c6]
+  ]
+
+  
+
   const columnHarga = [1, 3, 1, 3, 3];
   const columnMerk = [0.3333, 1, 2, 2, 2];
   const columnShade = [1, 0.5, 1, 1, 1];
   const columnKetahanan = [0.3333, 0.5, 1, 1, 1];
   const columnPigmentasi = [0.3333, 0.5, 1, 1, 1];
 
-  const tabelPerbandingan = [
-    columnHarga,
-    columnMerk,
-    columnShade,
-    columnKetahanan,
-    columnPigmentasi,
-  ];
+  // const tabelPerbandingan = [
+  //   columnHarga,
+  //   columnMerk,
+  //   columnShade,
+  //   columnKetahanan,
+  //   columnPigmentasi,
+  // ];
 
-  // console.log(tabelPerbandingan);
+  console.log(tabelPerbandingan);
 
   const jumlahBobot = tabelPerbandingan.map((column) => {
     return parseFloat(
@@ -53,7 +87,7 @@ const AHP = () => {
   // console.log(reshapeNormalisasi);
 
   const bobotPrioritas = reshapeNormalisasi.map(
-    (column, index) => {
+    (column) => {
       return parseFloat(
         (
           column.reduce((a, b) => a + b, 0) / column.length
@@ -62,7 +96,7 @@ const AHP = () => {
     }
   );
 
-  // console.log(bobotPrioritas);
+  console.log(bobotPrioritas);
 
   const consistency = tabelPerbandingan.map(
     (column, index) => {
@@ -123,7 +157,7 @@ const AHP = () => {
   // console.log(consistencyIndex);
 
   const consistencyRatio = parseFloat(
-    (consistencyIndex / 1.12).toFixed(4)
+    (consistencyIndex / 1.24).toFixed(4)
   );
 
   // console.log(consistencyRatio);
@@ -144,7 +178,8 @@ const AHP = () => {
                 <th>Merk</th>
                 <th>Shade</th>
                 <th>Ketahanan</th>
-                <th>Pigmentasi</th>
+                <th>Coverage</th>
+                <th>Jenis Kulit</th>
               </tr>
             </thead>
             <tbody>
@@ -158,7 +193,8 @@ const AHP = () => {
                           "Merk",
                           "Shade",
                           "Ketahanan",
-                          "Pigmentasi",
+                          "Coverage",
+                          "Jenis Kulit",
                         ][index]
                       }
                     </td>
@@ -187,7 +223,8 @@ const AHP = () => {
                 <th>Merk</th>
                 <th>Shade</th>
                 <th>Ketahanan</th>
-                <th>Pigmentasi</th>
+                <th>Coverage</th>
+                <th>Jenis Kulit</th>
                 <th className="bg-slate-300">BP</th>
               </tr>
             </thead>
@@ -201,7 +238,8 @@ const AHP = () => {
                         "Merk",
                         "Shade",
                         "Ketahanan",
-                        "Pigmentasi",
+                        "Coverage",
+                        "Jenis Kulit",
                       ][index]
                     }
                   </td>
@@ -224,7 +262,8 @@ const AHP = () => {
                 <th>Merk</th>
                 <th>Shade</th>
                 <th>Ketahanan</th>
-                <th>Pigmentasi</th>
+                <th>Coverage</th>
+                <th>Jenis Kulit</th>
                 <th className="bg-slate-300">SUM</th>
                 <th className="bg-slate-300">CM</th>
               </tr>
@@ -239,7 +278,8 @@ const AHP = () => {
                         "Merk",
                         "Shade",
                         "Ketahanan",
-                        "Pigmentasi",
+                        "Coverage",
+                        "Jenis Kulit",
                       ][index]
                     }
                   </td>
